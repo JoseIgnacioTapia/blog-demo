@@ -8,6 +8,8 @@ interface PostItemProps {
 }
 
 function PostItem({ post }: PostItemProps) {
+  console.log(post);
+
   const { title, image, excerpt, date, slug } = post;
 
   const formattedDate = new Date(date).toLocaleDateString('es-ES', {
