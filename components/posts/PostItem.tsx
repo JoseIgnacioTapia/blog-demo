@@ -8,8 +8,6 @@ interface PostItemProps {
 }
 
 function PostItem({ post }: PostItemProps) {
-  console.log(post);
-
   const { title, image, excerpt, date, slug } = post;
 
   const formattedDate = new Date(date).toLocaleDateString('es-ES', {
@@ -19,7 +17,6 @@ function PostItem({ post }: PostItemProps) {
   });
 
   const imagePath = `/images/posts/${slug}/${image}`;
-  console.log(imagePath);
 
   const linkPath = `/posts/${slug}`;
 
