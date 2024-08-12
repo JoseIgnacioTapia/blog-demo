@@ -1,36 +1,31 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { Post } from '@/types';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
-interface PostData {
-  slug: string;
-  title: string;
-  date: string;
-  content: string;
-  isFeatured: boolean;
-}
-
-function getPostData(fileName: string): PostData {
+function getPostData(fileName: string): Post {
   const filePath = path.join(postsDirectory, fileName);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
 
   const postSlug = fileName.replace(/\.md$/, '');
 
-  const postData: PostData = {
+  const postData: Post = {
     slug: postSlug,
-    title: data.title,
-    date: data.date,
-    isFeatured: data.isFeatured,
-    content,
+    title: data.title as string,
+    image: data.image as string,
+    excerpt: data.excerpt as string,
+    date: data.date as string,
+    content: content as string,
+    isFeatured: data.isFeatured || false,
   };
 
   return postData;
 }
 
-export function getAllPosts(): PostData[] {
+export function getAllPosts(): Post[] {
   const postFiles = fs.readdirSync(postsDirectory);
 
   const allPosts = postFiles.map((postFile) => {
