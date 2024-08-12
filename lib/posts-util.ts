@@ -5,7 +5,7 @@ import { Post } from '@/types';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
-function getPostData(fileName: string): Post | null {
+export function getPostData(fileName: string): Post | null {
   try {
     const filePath = path.join(postsDirectory, fileName);
     const fileContent = fs.readFileSync(filePath, 'utf-8');
