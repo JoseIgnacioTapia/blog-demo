@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  gap: 0.5rem; /* Espacio entre los tags */
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  color: var(--color-primary-500);
+  background-color: #fff;
+  font-size: 0.875rem;
+}
