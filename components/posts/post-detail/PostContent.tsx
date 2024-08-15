@@ -5,6 +5,7 @@ import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import PostHeader from './PostHeader';
 import classes from './post-content.module.css';
 import { Post } from '@/types';
+import Link from 'next/link';
 
 interface PostContentProps {
   post: Post;
@@ -16,12 +17,16 @@ function PostContent({ post }: PostContentProps) {
   const customRenderers = {
     img(image: any) {
       return (
-        <Image
-          src={`/images/posts/${post.slug}/${image.src}`}
-          alt={image.alt}
-          width={600}
-          height={300}
-        />
+        <Link legacyBehavior href={`/images/posts/${post.slug}/${image.src}`}>
+          <a target='_blank'>
+            <Image
+              src={`/images/posts/${post.slug}/${image.src}`}
+              alt={image.alt}
+              width={600}
+              height={300}
+            />
+          </a>
+        </Link>
       );
     },
     // p(paragraph: any) {
