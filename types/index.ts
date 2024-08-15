@@ -3,6 +3,7 @@ export interface Post {
   title: string;
   image: string;
   excerpt: string;
+  author: string;
   date: string;
   isFeatured?: boolean;
   content?: string;

@@ -18,6 +18,7 @@ export function getPostData(fileName: string): Post | null {
       title: data.title as string,
       image: data.image as string,
       excerpt: data.excerpt as string,
+      author: data.author as string,
       date: data.date as string,
       content: content as string,
       isFeatured: data.isFeatured || false,

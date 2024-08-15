@@ -10,7 +10,7 @@
 }
 
 .header h1 {
-  font-size: var(--size-8);
+  font-size: var(--size-14);
   color: var(--color-primary-500);
   margin: 0;
   line-height: initial;
