@@ -47,3 +47,7 @@
     padding: var(--size-8);
   }
 }
+
+.markdown {
+  margin: 2rem 0;
+}

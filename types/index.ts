@@ -7,4 +7,5 @@ export interface Post {
   date: string;
   isFeatured?: boolean;
   content?: string;
+  tags: string[];
 }

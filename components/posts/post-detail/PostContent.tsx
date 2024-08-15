@@ -6,6 +6,7 @@ import PostHeader from './PostHeader';
 import classes from './post-content.module.css';
 import { Post } from '@/types';
 import Link from 'next/link';
+import PostFooter from './PostFooter';
 
 interface PostContentProps {
   post: Post;
@@ -72,7 +73,10 @@ function PostContent({ post }: PostContentProps) {
   return (
     <article className={classes.content}>
       <PostHeader title={post.title} image={imagePath} author={post.author} />
-      <ReactMarkdown components={customRenderers}>{post.content}</ReactMarkdown>
+      <ReactMarkdown className={classes.markdown} components={customRenderers}>
+        {post.content}
+      </ReactMarkdown>
+      <PostFooter tags={post.tags} />
     </article>
   );
 }
