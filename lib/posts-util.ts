@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import readingTime from 'reading-time';
 import { Post } from '@/types';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
@@ -21,6 +22,7 @@ export function getPostData(fileName: string): Post | null {
       author: data.author || 'Fiqus',
       date: data.date as string,
       content: content as string,
+      readingTime: readingTime(content).text,
       isFeatured: data.isFeatured || false,
       tags: data.tags || [],
     };

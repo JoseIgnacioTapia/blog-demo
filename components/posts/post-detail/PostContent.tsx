@@ -73,6 +73,7 @@ function PostContent({ post }: PostContentProps) {
   return (
     <article className={classes.content}>
       <PostHeader title={post.title} image={imagePath} author={post.author} />
+      <p>{post.readingTime}</p>
       <ReactMarkdown className={classes.markdown} components={customRenderers}>
         {post.content}
       </ReactMarkdown>
