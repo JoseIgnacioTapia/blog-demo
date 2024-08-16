@@ -21,7 +21,7 @@ function PostContent({ post }: PostContentProps) {
   const customRenderers = {
     img({ src, alt }: CustomImageProps) {
       return (
-        <Link legacyBehavior href={`/images/posts/${post.slug}/${src}`} target="_blank">
+        <Link href={`/images/posts/${post.slug}/${src}`} target="_blank">
           <Image
             src={`/images/posts/${post.slug}/${src}`}
             alt={alt ?? ''}
