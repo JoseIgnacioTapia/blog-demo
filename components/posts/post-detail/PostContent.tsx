@@ -1,34 +1,36 @@
-import ReactMarkdown from 'react-markdown';
-import Image from 'next/image';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import PostHeader from './PostHeader';
-import classes from './post-content.module.css';
-import { Post } from '@/types';
-import Link from 'next/link';
-import PostFooter from './PostFooter';
+import ReactMarkdown from 'react-markdown'
+import Image from 'next/image'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import PostHeader from './PostHeader'
+import classes from './post-content.module.css'
+import { Post } from '@/types'
+import Link from 'next/link'
+import PostFooter from './PostFooter'
+import { ImgHTMLAttributes } from 'react'
 
 interface PostContentProps {
-  post: Post;
+  post: Post
 }
 
+interface CustomImageProps extends ImgHTMLAttributes<HTMLImageElement> {}
+
 function PostContent({ post }: PostContentProps) {
-  const imagePath = `/images/posts/${post.slug}/${post.image}`;
+  const imagePath = `/images/posts/${post.slug}/${post.image}`
 
   const customRenderers = {
-    img(image: any) {
+    img({ src, alt }: CustomImageProps) {
       return (
-        <Link legacyBehavior href={`/images/posts/${post.slug}/${image.src}`}>
-          <a target='_blank'>
-            <Image
-              src={`/images/posts/${post.slug}/${image.src}`}
-              alt={image.alt}
-              width={600}
-              height={300}
-            />
-          </a>
+        <Link legacyBehavior href={`/images/posts/${post.slug}/${src}`} target="_blank">
+          <Image
+            src={`/images/posts/${post.slug}/${src}`}
+            alt={alt ?? ''}
+            width={600}
+            height={300}
+            className={classes.hoverimage}
+          />
         </Link>
-      );
+      )
     },
     // p(paragraph: any) {
     //   const { node } = paragraph;
@@ -52,23 +54,18 @@ function PostContent({ post }: PostContentProps) {
     // },
 
     code({ node, inline, className, children, ...props }: any) {
-      const match = /language-(\w+)/.exec(className || '');
+      const match = /language-(\w+)/.exec(className || '')
       return !inline && match ? (
-        <SyntaxHighlighter
-          style={atomDark}
-          language={match[1]}
-          PreTag='div'
-          {...props}
-        >
+        <SyntaxHighlighter style={atomDark} language={match[1]} PreTag="div" {...props}>
           {String(children).replace(/\n$/, '')}
         </SyntaxHighlighter>
       ) : (
         <code className={className} {...props}>
           {children}
         </code>
-      );
-    },
-  };
+      )
+    }
+  }
 
   return (
     <article className={classes.content}>
@@ -79,7 +76,7 @@ function PostContent({ post }: PostContentProps) {
       </ReactMarkdown>
       <PostFooter tags={post.tags} />
     </article>
-  );
+  )
 }
 
-export default PostContent;
+export default PostContent

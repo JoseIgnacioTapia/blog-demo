@@ -22,18 +22,26 @@
 
 /* Estilos para la lista no ordenada dentro del contenedor .content */
 .content ul {
-  list-style-type: disc; /* Cambia el tipo de viñeta, por ejemplo, disc, circle, square, etc. */
-  margin: 20px; /* Márgenes alrededor de la lista */
-  padding-left: 40px; /* Espacio antes de la lista para alinear con las viñetas */
-  color: #333; /* Color del texto */
+  list-style-type: disc;
+  /* Cambia el tipo de viñeta, por ejemplo, disc, circle, square, etc. */
+  margin: 20px;
+  /* Márgenes alrededor de la lista */
+  padding-left: 40px;
+  /* Espacio antes de la lista para alinear con las viñetas */
+  color: #333;
+  /* Color del texto */
 }
 
 /* Estilos para los elementos de la lista */
 .content ul li {
-  margin-bottom: 10px; /* Espacio entre los elementos de la lista */
-  font-size: 16px; /* Tamaño de la fuente */
-  line-height: 1.5; /* Altura de la línea para mejorar la legibilidad */
-  color: #3e3e3e; /* Color del texto de los ítems */
+  margin-bottom: 10px;
+  /* Espacio entre los elementos de la lista */
+  font-size: 16px;
+  /* Tamaño de la fuente */
+  line-height: 1.5;
+  /* Altura de la línea para mejorar la legibilidad */
+  color: #3e3e3e;
+  /* Color del texto de los ítems */
 }
 
 .content .image {
@@ -51,6 +59,11 @@
   .content {
     padding: var(--size-8);
   }
+}
+
+.hoverimage {
+  display: block;
+  cursor: pointer;
 }
 
 .markdown {
