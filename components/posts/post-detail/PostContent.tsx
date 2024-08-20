@@ -12,10 +12,9 @@ import { ImgHTMLAttributes } from 'react'
 interface PostContentProps {
   post: Post
 }
-
 interface CustomImageProps extends ImgHTMLAttributes<HTMLImageElement> {}
 
-function PostContent({ post }: PostContentProps) {
+export default function PostContent({ post }: PostContentProps) {
   const imagePath = `/images/posts/${post.slug}/${post.image}`
 
   const customRenderers = {
@@ -27,31 +26,11 @@ function PostContent({ post }: PostContentProps) {
             alt={alt ?? ''}
             width={600}
             height={300}
-            className={classes.hoverimage}
+            className="cursor-zoom-in"
           />
         </Link>
       )
     },
-    // p(paragraph: any) {
-    //   const { node } = paragraph;
-
-    //   if (node.children[0].type === 'image') {
-    //     const image = node.children[0];
-
-    //     return (
-    //       <div className={classes.image}>
-    //         <Image
-    //           src={`/images/posts/${post.slug}/${image.url}`} // Because image is inside paragraph so use url instead src
-    //           alt={image.alt}
-    //           width={600}
-    //           height={300}
-    //         />
-    //       </div>
-    //     );
-    //   }
-
-    //   return <p>{paragraph.children}</p>;
-    // },
 
     code({ node, inline, className, children, ...props }: any) {
       const match = /language-(\w+)/.exec(className || '')
@@ -78,5 +57,3 @@ function PostContent({ post }: PostContentProps) {
     </article>
   )
 }
-
-export default PostContent

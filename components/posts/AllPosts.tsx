@@ -1,18 +1,17 @@
-import classes from './all-posts.module.css';
-import Posts from './Posts';
-import { Post } from '@/types';
+import Posts from './Posts'
+import { Post } from '@/types'
 
 interface AllPostsProps {
-  posts: Post[];
+  posts: Post[]
 }
 
 function AllPosts({ posts }: AllPostsProps) {
   return (
-    <section className={classes.posts}>
-      <h1>All Posts</h1>
+    <section className="w-[90%] max-w-[60rem] mx-auto my-8">
+      <h1 className="text-3xl md:text-6xl text-center">All Posts</h1>
       <Posts posts={posts} />
     </section>
-  );
+  )
 }
 
-export default AllPosts;
+export default AllPosts

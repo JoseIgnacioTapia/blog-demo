@@ -1,19 +1,15 @@
-import classes from './post-footer.module.css';
-
 interface PostFooterProps {
-  tags: string[];
+  tags: string[]
 }
 
-function PostFooter({ tags }: PostFooterProps) {
+export default function PostFooter({ tags }: PostFooterProps) {
   return (
-    <footer className={classes.footer}>
+    <footer className="flex flex-wrap gap-2">
       {tags.map((tag, index) => (
-        <span className={classes.tag} key={index}>
+        <span className="px-4 py-2 bg-white rounded-xl text-sm" key={index}>
           {tag}
         </span>
       ))}
     </footer>
-  );
+  )
 }
-
-export default PostFooter;
